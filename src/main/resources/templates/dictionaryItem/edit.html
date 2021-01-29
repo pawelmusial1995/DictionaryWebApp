@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dictionary Item Edit</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center"></div>
+	<div style="margin-top: 100px; margin-left: 50px;">
+		<h4>Details:</h4>
+		<form class="form-horizontal"
+			th:action="@{/dictionaryItem/edit/{dicItemId}(dicItemId=${dictionaryItem.dicItemId})}"
+			th:object="${dictionaryItemForm}" method="post"
+			data-parsley-validate="true">
+			<input type="hidden" th:value="${dictionaryItem.dicItemId}"
+				th:name="dicItemId" th:id="dicItemId" />
+
+			<div class="form-group row">
+				<label for="dicItemName" class="control-label col-sm-1">Dictionary
+					Item Name: </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="dicItemName"
+						th:value="${dictionaryItem.dicItemName}" th:id="dicItemName"
+						th:name="dicItemName" data-parsley-required="true">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="dicItemDefinition" class="control-label col-sm-1">Dictionary
+					Item Definition: </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="dicItemDefinition"
+						th:value="${dictionaryItem.dicItemDefinition}" th:id="dicItemDefinition"
+						th:name="dicItemDefinition" data-parsley-required="true">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="dictionaryActive" class="control-label col-sm-1">Dictionary Item
+					Active: </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="dictionaryActive"
+						th:value="${dictionaryItem.dicItemActive}"
+						th:id="dictionaryActive" th:name="dictionaryActive"
+						data-parsley-required="true" required>
+				</div>
+			</div>
+
+			<div class="form-group row" style="margin-top: 25px">
+				<div class="  ">
+					<button type="submit" class="btn btn-primary">Edit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

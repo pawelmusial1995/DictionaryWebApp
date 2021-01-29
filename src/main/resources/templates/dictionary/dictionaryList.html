@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>List Dictionaries</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<div></div>
+		<div style="margin-bottom: 10px;">
+			<h1>List Dictionaries</h1>
+			<button>
+				<i class="fa fa-plus-square"></i><a class="btn btn-xs btn-inverse"
+					th:href="@{/dictionary/add}" /> Add New Dictionary Item </a>
+			</button>
+		</div>
+
+
+
+
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>Dictionary ID</th>
+					<th>Dictionary Name</th>
+					<th>Dictionary Active</th>
+					<th>Details</th>
+					<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dictionary : ${dictionaryList}">
+					<td th:text="${dictionary.dictionaryId}">DictionaryID</td>
+					<td th:text="${dictionary.dictionaryName}">DictionaryName</td>
+					<td th:text="${dictionary.dictionaryActive}"></td>
+					<td><a
+						th:href="@{'/dictionaryItem/'+${dictionary.dictionaryId}+'/details'}"
+						class="btn btn-icon btn-warning"><i class="fa fa-user">Details</i></a>
+					</td>
+					<td><a
+						th:href="@{'/dictionary/'+${dictionary.dictionaryId}+'/edit'}"
+						class="btn btn-icon btn-danger"><i class="fa fa-user">Edit</i></a>
+						<a
+						th:href="@{'/dictionary/disactivate/'+ ${dictionary.dictionaryId}}"
+						class="btn btn-icon btn-danger"><i class="fa fa-user">Disactivate</i></a>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+</body>
+</html>

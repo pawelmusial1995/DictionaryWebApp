@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dictionary Items list</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<div></div>
+		<div style="margin-bottom: 10px;">
+			<h1>Dictionary Items list</h1>
+			<button>
+				<i class="fa fa-plus-square"></i><a class="btn btn-xs btn-inverse"
+					th:href="@{/dictionaryItem/add}" /> Add New Dictionary Item </a>
+			</button>
+		</div>
+
+
+
+
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>DictionaryItem ID</th>
+					<th>DictionaryItem Name</th>
+					<th>DictionaryItem Definition</th>
+					<th>Dictionary Active</th>
+					<th>Dictionary Name</th>
+					<th>Edit</th>
+					<th>Deactivate</th>
+					<th>Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dictionaryItem : ${dicitonaryItemlist}">
+					<td th:text="${dictionaryItem.dicItemId}">DictionaryItemID</td>
+					<td th:text="${dictionaryItem.dicItemName}">DictionaryItem
+						Name</td>
+					<td th:text="${dictionaryItem.dicItemDefinition}">DictionaryItem
+						Definition</td>
+					<td th:text="${dictionaryItem.dicItemActive}">Dictionary
+						Active</td>
+					<td th:text="${dictionaryItem.dictionary.dictionaryName}">Dictionary
+						Name</td>
+					<td><a
+						th:href="@{'/dictionaryItem/'+${dictionaryItem.dicItemId}+'/edit'}"
+						class="btn btn-icon btn-info"><i class="fa fa-user">Edit</i></a></td>
+					<td><a
+						th:href="@{'/dictionaryItem/disactivate/'+ ${dictionaryItem.dicItemId}}"
+						class="btn btn-icon btn-danger"><i class="fa fa-user">Disactivate</i></a>
+					</td>
+					<td><a
+						th:href="@{'/dictionaryItem/remove/'+ ${dictionaryItem.dicItemId}}"
+						class="btn btn-icon btn-danger"><i class="fa fa-user">Remove</i></a>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+</body>
+</html>

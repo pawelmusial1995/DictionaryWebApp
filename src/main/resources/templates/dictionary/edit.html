@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dictionary Edit</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+
+		<div style="margin-top: 20px">
+			<h1 class="page-header"
+				th:text="'Dictionary Number ' + ': ' + ${dictionary.dictionaryId}" />
+		</div>
+	</div>
+	<div style="margin-top: 100px; margin-left: 50px;">
+		<h4>Details:</h4>
+		<form class="form-horizontal"
+			th:action="@{/dictionary/edit/{dictionaryId}(dictionaryId=${dictionary.dictionaryId})}"
+			th:object="${orderAddForm}" method="post"
+			data-parsley-validate="true">
+			<input type="hidden" th:value="${dictionary.dictionaryId}"
+				th:name="dictionaryId" th:id="dictionaryId" />
+
+			<div class="form-group row">
+				<label for="productName" class="control-label col-sm-1">Dictionary
+					Name: </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="dictionaryName"
+						th:value="${dictionary.dictionaryName}" th:id="dictionaryName"
+						th:name="dictionaryName" data-parsley-required="true">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="orderPrice" class="control-label col-sm-1">Dictionary
+					Active: </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="dictionaryActive"
+						th:value="${dictionary.dictionaryActive}" th:id="dictionaryActive"
+						th:name="dictionaryActive" data-parsley-required="true" required>
+				</div>
+			</div>
+
+			<div class="form-group row" style="margin-top: 25px">
+				<div class=" ">
+					<button type="submit" class="btn btn-primary">Edit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

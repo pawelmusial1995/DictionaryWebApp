@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Dictionary item Add</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+
+		<div style="margin-top: 20px">
+			<h4>Add New Dictionary Item :</h4>
+		</div>
+
+
+	</div>
+	<div style="margin-top: 100px; margin-left: 50px;">
+
+		<form class="form-horizontal" th:action="@{/dictionaryItem/add}"
+			th:object="${dictionaryItem}" method="post"
+			data-parsley-validate="true">
+
+			<div class="form-group row">
+				<label for="dicItemName" class="control-label col-sm-1">DictionaryItem
+					Name: </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control"
+						data-parsley-required="true" th:field="*{dicItemName}" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="dicItemDefinition" class="control-label col-sm-1">DictionaryItem
+					definition : </label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control"
+						data-parsley-required="true" th:field="*{dicItemDefinition}" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="dictionaryItemActive" class="control-label col-sm-1">dictionaryItemActive:
+				</label>
+				<div class="col-sm-2">
+					<input type="checkbox" class="form-control"
+						data-parsley-required="true" th:field="*{dicItemActive}"
+						th:checked="*{dicItemActive}" />
+				</div>
+			</div>
+
+			<div class="form-group row" style="margin-top: 25px">
+				<div class="  ">
+					<button type="submit" class="btn btn-primary">Add New
+						Dictionary item</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>
